@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 namespace RockPaperScissor
 {
@@ -11,10 +12,13 @@ namespace RockPaperScissor
         model mdl = new model();
         Random rand = new Random();
 
+        [ContractInvariantMethod]
         public void SetNames(string name1, string name2)
         {
             mdl.name1 = name1;
             mdl.name2 = name2;
+
+            Contract.Requires(name1 != "" && name2 != "", "Navn må ikke være tomt!");
         }
 
         public void Play()
