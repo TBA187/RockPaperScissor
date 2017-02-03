@@ -7,10 +7,13 @@ using System.Diagnostics.Contracts;
 
 namespace RockPaperScissor
 {
+
     class controller
     {
         model mdl = new model();
         Random rand = new Random();
+        string player1move = "";
+        string player2move = "";
 
         [ContractInvariantMethod]
         public void SetNames(string name1, string name2)
@@ -23,6 +26,7 @@ namespace RockPaperScissor
 
         public void Play()
         {
+
             mdl.points1 = 0;
             mdl.points2 = 0;
 
@@ -33,6 +37,9 @@ namespace RockPaperScissor
             }
             else
             {
+                // 1 = rock
+                // 2 = paper
+                // 3 = scizor
                 for (int i = 1; i < 6; i++)
                 {
                     mdl.val1 = rand.Next(1, 3);
@@ -42,26 +49,38 @@ namespace RockPaperScissor
                     if (mdl.val1 == 1 && mdl.val2 == 2)
                     {
                         mdl.points2 += 1;
+                        player1move = "Rock";
+                        player2move = "Paper";
                     }
                     else if (mdl.val1 == 1 && mdl.val2 == 3)
                     {
                         mdl.points1 += 1;
+                        player1move = "Rock";
+                        player2move = "Scissor";
                     }
                     else if (mdl.val1 == 2 && mdl.val2 == 1)
                     {
                         mdl.points1 += 1;
+                        player1move = "Paper";
+                        player2move = "Rock";
                     }
                     else if (mdl.val1 == 2 && mdl.val2 == 3)
                     {
                         mdl.points2 += 1;
+                        player1move = "Paper";
+                        player2move = "Scissor";
                     }
                     else if (mdl.val1 == 3 && mdl.val2 == 1)
                     {
                         mdl.points2 += 1;
+                        player1move = "Scissor";
+                        player2move = "Paper";
                     }
                     else if (mdl.val1 == 3 && mdl.val2 == 2)
                     {
                         mdl.points1 += 1;
+                        player1move = "Scissor";
+                        player2move = "Rock";
                     }
                     else
                     {

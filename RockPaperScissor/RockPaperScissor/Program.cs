@@ -13,9 +13,6 @@ namespace RockPaperScissor
         {
             controller con = new controller();
 
-            // 1 = rock
-            // 2 = paper
-            // 3 = scizor
 
             while (true)
             {
