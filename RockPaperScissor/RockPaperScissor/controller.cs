@@ -90,6 +90,7 @@ namespace RockPaperScissor
                     }
 
                     Console.WriteLine("Runde: " + i + draw);
+                    Console.WriteLine("Player " + mdl.name1 + " " + player1move + " and " + mdl.name2 + " " + player2move);
                     Console.WriteLine(mdl.name1 + " har: " + mdl.points1);
                     Console.WriteLine(mdl.name2 + " har: " + mdl.points2 + "\n");
 
