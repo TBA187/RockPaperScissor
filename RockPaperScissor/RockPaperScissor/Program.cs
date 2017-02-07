@@ -16,7 +16,7 @@ namespace RockPaperScissor
 
             while (true)
             {
-                Console.WriteLine("1. Login \n 2. Start game \n 3. Terminate game");
+                Console.WriteLine("1. Login \n2. Start game \n3. Terminate game");
                 int val = int.Parse(Console.ReadLine());
                 if (val == 1)
                 {

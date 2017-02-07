@@ -15,13 +15,30 @@ namespace RockPaperScissor
         string player1move = "";
         string player2move = "";
 
-        [ContractInvariantMethod]
-        public void SetNames(string name1, string name2)
+        string validationStatus;
+        public string SetNames(string name1, string name2)
         {
-            mdl.name1 = name1;
-            mdl.name2 = name2;
+            Contract.Requires(!string.IsNullOrEmpty(name1), "Navn må ikke være tomt!");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name1), "Exception!!");
 
-            Contract.Requires(name1 != "" && name2 != "", "Navn må ikke være tomt!");
+            Contract.Requires(!string.IsNullOrEmpty(name2), "Navn må ikke være tomt!");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name2), "Exception!!");
+
+            Contract.Ensures(Contract.Result<string>() != null);
+
+            validationStatus = Contract.Result<string>();
+
+            if (name1 == "" || name2 == "")
+            {
+                validationStatus = "Navn må ikke være tomt!";
+            }
+            else
+            {
+                mdl.name1 = name1;
+                mdl.name2 = name2;
+            }
+
+            return validationStatus;
         }
 
         public void Play()
