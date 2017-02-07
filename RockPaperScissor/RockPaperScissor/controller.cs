@@ -24,7 +24,7 @@ namespace RockPaperScissor
             Contract.Requires(!string.IsNullOrEmpty(name2), "Navn må ikke være tomt!");
             Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name2), "Exception!!");
 
-            Contract.Ensures(Contract.Result<string>() != null);
+            Contract.Ensures(Contract.Result<string>() != "");
 
             validationStatus = Contract.Result<string>();
 
