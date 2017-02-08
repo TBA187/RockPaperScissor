@@ -19,10 +19,10 @@ namespace RockPaperScissor
         public string SetNames(string name1, string name2)
         {
             Contract.Requires(!string.IsNullOrEmpty(name1), "Navn må ikke være tomt!");
-            Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name1), "Exception!!");
+            //Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name1), "Exception!!");
 
             Contract.Requires(!string.IsNullOrEmpty(name2), "Navn må ikke være tomt!");
-            Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name2), "Exception!!");
+            //Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name2), "Exception!!");
 
             Contract.Ensures(Contract.Result<string>() != "");
 
