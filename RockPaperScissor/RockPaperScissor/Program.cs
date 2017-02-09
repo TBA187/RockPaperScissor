@@ -11,7 +11,7 @@ namespace RockPaperScissor
     {
         static void Main(string[] args)
         {
-            controller con = new controller();
+            Controller con = new Controller();
 
 
             while (true)
@@ -29,7 +29,13 @@ namespace RockPaperScissor
                 }
                 else if (val == 2)
                 {
-                    con.Play();
+                    con.ResetPoints();
+                    Console.WriteLine("Player 1 plays");
+                    int move1 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Player 2 plays");
+                    int move2 = int.Parse(Console.ReadLine());
+                    con.SetMoves(move1, move2);
+                    con.Play(move1,move2); 
                 }
 
                 else

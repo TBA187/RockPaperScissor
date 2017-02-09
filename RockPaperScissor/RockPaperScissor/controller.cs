@@ -8,7 +8,7 @@ using System.Diagnostics.Contracts;
 namespace RockPaperScissor
 {
 
-    class controller
+    class Controller
     {
         model mdl = new model();
         Random rand = new Random();
@@ -41,11 +41,32 @@ namespace RockPaperScissor
             return validationStatus;
         }
 
-        public void Play()
+        public void ResetPoints() // This is a Command
         {
-
             mdl.points1 = 0;
             mdl.points2 = 0;
+        }
+
+        public void SetMoves(int playerMove1, int playerMove2) // This is a Command
+        {
+            mdl.val1 = playerMove1;
+            mdl.val2 = playerMove2;
+        }
+
+        List<int> listOfMoves;
+        public List<int> ReturnMoves() //This is the Query
+        {
+            listOfMoves = new List<int>();
+
+            listOfMoves.Add(mdl.val1);
+            listOfMoves.Add(mdl.val2);
+
+            return listOfMoves;
+        }
+
+        public void Play()
+        {
+            
 
             if (string.IsNullOrEmpty(mdl.name1) && string.IsNullOrEmpty(mdl.name2))
             {
@@ -57,10 +78,6 @@ namespace RockPaperScissor
                 // 1 = rock
                 // 2 = paper
                 // 3 = scizor
-                for (int i = 1; i < 6; i++)
-                {
-                    mdl.val1 = rand.Next(1, 3);
-                    mdl.val2 = rand.Next(1, 3);
                     string draw = "";
 
                     if (mdl.val1 == 1 && mdl.val2 == 2)
@@ -106,12 +123,11 @@ namespace RockPaperScissor
                         draw = " uafgjort";
                     }
 
-                    Console.WriteLine("Runde: " + i + draw);
+                    Console.WriteLine("Runde: " + draw);
                     Console.WriteLine("Player " + mdl.name1 + " " + player1move + " and " + mdl.name2 + " " + player2move);
                     Console.WriteLine(mdl.name1 + " har: " + mdl.points1);
                     Console.WriteLine(mdl.name2 + " har: " + mdl.points2 + "\n");
 
-                }
                 Console.ReadKey();
             }
         }
