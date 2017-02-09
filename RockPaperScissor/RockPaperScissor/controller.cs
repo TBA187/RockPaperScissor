@@ -12,39 +12,46 @@ namespace RockPaperScissor
     {
         model mdl = new model();
         Random rand = new Random();
+        Model.Player player;
         string player1move = "";
         string player2move = "";
 
         string validationStatus;
-        public string SetNames(string name1, string name2)
+        public string SetNames(string inputPlayerName)
         {
-            Contract.Requires(!string.IsNullOrEmpty(name1), "Navn må ikke være tomt!");
+            Contract.Requires(!string.IsNullOrEmpty(inputPlayerName), "Navn må ikke være tomt!");
             //Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name1), "Exception!!");
 
-            Contract.Requires(!string.IsNullOrEmpty(name2), "Navn må ikke være tomt!");
+            //Contract.Requires(!string.IsNullOrEmpty(name2), "Navn må ikke være tomt!");
             //Contract.Requires<ArgumentNullException>(!string.IsNullOrEmpty(name2), "Exception!!");
 
             Contract.Ensures(Contract.Result<string>() != "");
 
             validationStatus = Contract.Result<string>();
+            player = new Model.Player();
 
-            if (name1 == "" || name2 == "")
+            if (inputPlayerName == "")
             {
                 validationStatus = "Navn må ikke være tomt!";
             }
             else
             {
-                mdl.name1 = name1;
-                mdl.name2 = name2;
+                try
+                {
+                    player.PlayerName = inputPlayerName;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-
             return validationStatus;
         }
 
         public void ResetPoints() // This is a Command
         {
-            mdl.points1 = 0;
-            mdl.points2 = 0;
+            player = new Model.Player();
+            player.Credential.Points = 0;
         }
 
         public void SetMoves(int playerMove1, int playerMove2) // This is a Command
@@ -66,8 +73,6 @@ namespace RockPaperScissor
 
         public void Play()
         {
-            
-
             if (string.IsNullOrEmpty(mdl.name1) && string.IsNullOrEmpty(mdl.name2))
             {
                 Console.WriteLine("Angiv venligst navn på begge deltagere!");
