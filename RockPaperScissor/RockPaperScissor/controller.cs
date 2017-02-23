@@ -13,7 +13,7 @@ namespace RockPaperScissor
         model mdl = new model();
         Random rand = new Random();
         string player1move = "";
-        string player2move = "";
+        string player2move = "";    
 
         string validationStatus;
         public string SetNames(string name1, string name2)
