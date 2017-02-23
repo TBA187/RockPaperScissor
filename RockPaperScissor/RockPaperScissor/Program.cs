@@ -11,8 +11,8 @@ namespace RockPaperScissor
     {
         static void Main(string[] args)
         {
-            controller con = new controller();
-
+            Controller con = new Controller();
+        
 
             while (true)
             {
@@ -20,16 +20,27 @@ namespace RockPaperScissor
                 int val = int.Parse(Console.ReadLine());
                 if (val == 1)
                 {
-                    Console.WriteLine("Angiv navn på første spiller:");
-                    string name1 = Console.ReadLine();
-                    Console.WriteLine("Angiv navn på anden spiller:");
-                    string name2 = Console.ReadLine();
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Console.WriteLine("Angiv navn på første spiller:");
+                        string name1 = Console.ReadLine();
+                        con.SetNames(name1);
+                    }
+                    
+                    //Console.WriteLine("Angiv navn på anden spiller:");
+                    //string name2 = Console.ReadLine();
 
-                    con.SetNames(name1, name2);
+                    
                 }
                 else if (val == 2)
                 {
-                    con.Play();
+                    con.ResetPoints();
+                    Console.WriteLine("Player 1 plays");
+                    int move1 = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Player 2 plays");
+                    int move2 = int.Parse(Console.ReadLine());
+                    con.SetMoves(move1, move2);
+                    //con.Play(move1,move2); 
                 }
 
                 else
